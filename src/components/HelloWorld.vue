@@ -3,7 +3,10 @@ import { defineComponent } from 'vue';
 </script>
 
 <template>
-  <p class="text-red-500">
-    Nothing's going on here
-  </p>
+  <button
+    class="border border-black px-2 py-1 rounded-lg"
+    @click="console.log('Hello, world')"
+  >
+    My Button
+  </button>
 </template>
