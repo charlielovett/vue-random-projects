@@ -12,6 +12,11 @@ const members = ref([
   "Aidan Goodrow",
   "Matt Saperstein",
   "Hunter Disco",
+  "Charlie Lovett",
+  "Adam Jaffe",
+  "Aidan Goodrow",
+  "Matt Saperstein",
+  "Hunter Disco",
 ]);
 
 const filteredMembers = computed(() => {
@@ -23,20 +28,22 @@ const filteredMembers = computed(() => {
 
 <template>
   <div class="flex justify-center items-center">
-    <div class="w-[400px] border border-gray-400 rounded-md p-4">
+    <div class="w-[400px] h-[500px] border border-gray-400 rounded-md p-4">
       <div class="flex flex-col gap-4">
         <h1 class="py-2 px-auto">
           {{ title }}
         </h1>
         <SearchInput v-model="searchValue" />
-        <transition-group name="list" tag="div">
-          <MemberItem
-            v-for="(member, index) in filteredMembers"
-            :key="index"
-            :name="member"
-            :class="{ 'border-b': index !== filteredMembers.length - 1 }"
-          />
-        </transition-group>
+        <div class="overflow-y-auto hide-scrollbar h-[368px]">
+          <transition-group name="list" tag="div">
+            <MemberItem
+              v-for="(member, index) in filteredMembers"
+              :key="index"
+              :name="member"
+              :class="{ 'border-b': index !== filteredMembers.length - 1 }"
+            />
+          </transition-group>
+        </div>
       </div>
     </div>
   </div>
@@ -52,5 +59,19 @@ const filteredMembers = computed(() => {
 .list-leave-to {
   opacity: 0;
   transform: translateY(30px);
+}
+/* Hide scrollbar for Webkit browsers (Chrome, Safari, etc.) */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Ensure the element is still scrollable */
+.hide-scrollbar {
+  overflow-y: scroll; /* Add overflow-y scroll */
 }
 </style>
