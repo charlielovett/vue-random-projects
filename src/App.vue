@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue';
+import GroupCenter from './components/GroupCenter.vue';
 </script>
 
 <template>
-  <HelloWorld />
+  <GroupCenter />
 </template>
 
 <style lang="scss">
